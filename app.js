@@ -1,7 +1,7 @@
 const express = require('express')
 const { v4: uuidv4 } = require('uuid');
 const cors = require('cors');
-const res = require('express/lib/response');
+
 
 const app = express()
 app.use(express.json())
@@ -10,41 +10,46 @@ app.use(express.static('www'))
 
 const port = 3000 //porta
 
-const jogadas = ['pedra', 'papel', 'tesoura']
+const jogo = []
 
-const jogadasPC = () => {
-  const ale = parseInt(Math.random() * 3)
-  return jogadas [ale]
-}
-const vencedor = (jogador, pc) =>{
-    const contJ = 0
-    const contC = 0
-    if(jogador === "pedra" && pc === "tesoura"||
-    jogador === "papel" && pc === "pedra"||
-    jogador === "tesoura" && pc === "papel"){
-      contJ++
-      return "JOGADOR GANHOU!!"
+app.get('/jokenpo', (req, res) => {
+  res.json(jogo)
+})
+
+app.post('/jokenpo', (req, res) => {
+    pontosComputador = req.body.pontosComputador
+    pontosJogador = req.body.pontosJogador
+    jogadasJogador = req.body.jogadasJogador
+    const jogadasComputador = Math.round(Math.random() * 2) + 1
+    
+    if ((jogadasJogador == 1) && (jogadasComputador == 1) ||
+      (jogadasJogador == 2) && (jogadasComputador == 2)||
+      (jogadasJogador == 3) && (jogadasComputador == 3)){
+        vencedor = 0;
     }
 
-    else if(jogador === pc){
-      return "EMPATOU!!"
-
+    else if ((jogadasJogador == 1) && (jogadasComputador == 2)||
+      (jogadasJogador == 2) && (jogadasComputador == 3)||
+      (jogadasJogador == 3) && (jogadasComputador == 1) ) {
+        vencedor = 2
     }
 
     else{
-      contC++
-      return "O COMPUTADOR GANHOU!!"
+      vencedor = 1
     }
-   
-}
-
-
- app.get('/jokenpo', (req, res) => {
-    const escolhaJogador = 'pedra'
-    const escolhaPC = jogadasPC()
-    //res.send(`jogador: ${vencedor.contJ} e Computador ${vencedor.contC}`)
-    res.send(`Jogador escolheu ${escolhaJogador} e o Computador escolheu ${escolhaPC}` + vencedor(escolhaJogador, escolhaPC))
-  })
+  
+    res.json(
+      {vencedor,
+      jogadasComputador
+    })
+    
+    jogo.push({
+      vencedor,
+      jogadasComputador
+        
+    })
+ 
+})  
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

@@ -1,0 +1,45 @@
+body{
+    background-color: #E8F0F2;
+    padding-top: 50px;
+}
+.main {
+    background-color: #39A2DB;
+    border-radius: 11px;
+    width:400px;
+    margin: auto auto;
+    text-align:center;
+    font-family: Comic Sans, Comic Sans MS, cursive;
+    color:#232323;
+    font-size:13px;
+    padding-top: 18px;
+    border: 2px solid #A2DBFA;
+   
+}
+
+select, input {
+    padding:5px;
+    font-size:17px;
+    margin:5px;
+}
+
+input.placar {
+    width:30px;
+    text-align:center;
+}
+
+.img img{
+    border-radius: 122px;
+    border: 2px solid white;
+    width: 80px;
+    height: auto;
+    cursor: pointer;
+}
+
+img:hover{
+    border-color: #A2DBFA;
+}
+.resultado {
+    margin-bottom: 25px;
+    font-size: 19px;
+    padding-bottom: 18px;
+}

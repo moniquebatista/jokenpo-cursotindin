@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Jokenpo-Curso-Tindin</title>
+</head>
+<body>
+        <div class="main">
+            <h1>Jokenpô - Curso Tindin</h1>
+            <label for="placar-jogador" id="label-jogador">Jogador</label>
+            <input type="text" id="placar-jogador" class="placar" readonly="readonly" value="0" />  X 
+             <input type="text" id="placar-computador" class="placar" readonly="readonly" value="0" />
+            <label for="placar-computador">Computador</label>
+            <div class="img">
+                <h2>Selecione sua jogada:</h2>
+                <a onclick="play(1);"><img src="assets/pedra.png" alt="">
+                <a onclick="play(2);"><img src="assets/papel.png" alt="">
+                <a onclick="play(3);"><img src="assets/tesoura.png" alt="">
+                <h2>O computador escolheu:</h2>
+                <p><img class="img"   id="imgPc"></p>
+            </div>
+            <div class="resultado">
+                    <span id="winner"></span>
+            </div>
+            
+        
+       
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="script.js"></script>
+    
+</body>
+</html>
